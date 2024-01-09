@@ -35,9 +35,9 @@ app.use(session({
     }),
     cookie: {
         secure: false,
-        maxAge: 360000,
-        expires: new Date(Date.now() + 360000),
-        httponly: true
+        maxAge: 3600000,
+        expires: new Date(Date.now() + 3600000),
+        httpOnly: true
     }
 }))
 
@@ -58,7 +58,7 @@ app.use('/toughts', toughtsRoutes)
 
 
 //set session to res
-// mpre que esse middleware for chamado (normalmente em todas as requisições), se houver um userid na sessão, as informações da sessão serão disponibilizadas para o template/renderização de forma local, acessíveis através de res.locals.session nas views do Express.
+// sempre que esse middleware for chamado (normalmente em todas as requisições), se houver um userid na sessão, as informações da sessão serão disponibilizadas para o template/renderização de forma local, acessíveis através de res.locals.session nas views do Express.
 app.use((req,res,next)=> {
     if(req.session.userid){
         res.locals.session = req.session
