@@ -14,10 +14,9 @@ module.exports = class UserController {
     const user = await User.findOne({ where: { email: email } })
 
     if (!user) {
-      res.render('auth/login', {
-        message: 'Usuário não encontrado!',
-      })
-
+      
+        req.flash('message', 'Usuário não encontrado')
+        res.render('auth/login')
       return
     }
 
@@ -25,17 +24,17 @@ module.exports = class UserController {
     const passwordMatch = bcrypt.compareSync(password, user.password)
 
     if (!passwordMatch) {
-      res.render('auth/login', {
-        message: 'Senha inválida!',
-      })
+      res.render('auth/login') 
+       req.flash( 'message' ,'Senha inválida!',)
+     
 
       return
     }
 
-    // auth user
+    // inicializar a entrada
     req.session.userid = user.id
 
-    req.flash('message', 'Login realizado com sucesso!')
+    req.flash('message', 'Entrada Liberada')
 
     req.session.save(() => {
       res.redirect('/')
@@ -61,7 +60,7 @@ module.exports = class UserController {
     const checkIfUserExists = await User.findOne({ where: { email: email } })
 
     if (checkIfUserExists) {
-      req.flash('message', 'O e-mail já está em uso!')
+      req.flash('message', 'O e-mail já está sendo utilizado')
       res.render('auth/register')
 
       return
@@ -79,7 +78,7 @@ module.exports = class UserController {
     User.create(user)
       .then((user) => {
         // initialize session
-        req.session.userid = user.id
+        req.session.userid = user.id 
 
         // console.log('salvou dado')
         // console.log(req.session.userid)
