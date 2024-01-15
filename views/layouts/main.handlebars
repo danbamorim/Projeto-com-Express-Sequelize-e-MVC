@@ -11,36 +11,37 @@
 </head>
 
 <body>
-   <nav id="navbar">
-      <a href="/" id="logo">
-        <img src="/img/cérebro-humano-preto-e-branco-na-vista-superior-eps-rgb-cor-global-141071242.webp" alt="Toughts">
-      </a>
-      <ul>
-        <li><a href="/">PENSAMENTOS</a></li>
-        {{#if session.userid}}    
-          <li><a href="/toughts/dashboard">PAINEL</a></li>
-          <li><a href="/logout">SAIR</a></li>
-        {{else}}
-          <li><a href="/login">ENTRAR</a></li>
-          <li><a href="/register">REGISTRAR</a></li>
-        {{/if}}
-      </ul>
-    </nav>
-    <div class="container">
-      {{#if messages.message}}
-        <div class="message">
-          {{messages.message}}
-        </div>
+  <nav id="navbar">
+    <a href="/" id="logo">
+      <img src="/img/cérebro-humano-preto-e-branco-na-vista-superior-eps-rgb-cor-global-141071242.webp" alt="Toughts">
+    </a>
+    <ul>
+      <li><a href="/">PENSAMENTOS</a></li>
+      {{#if session.userid}}
+      <li><a href="/toughts/dashboard">PAINEL</a></li>
+      <li><a href="/logout">SAIR</a></li>
+      {{else}}
+      <li><a href="/login">ENTRAR</a></li>
+      <li><a href="/register">REGISTRAR</a></li>
       {{/if}}
-      {{#if message}}
-        <div class="message">
-          {{message}}
-        </div>
-      {{/if}}
-      {{{ body }}}
+    </ul>
+  </nav>
+  <div class="container">
+    {{#if messages.message}}
+    <div class="message">
+      {{messages.message}}
     </div>
-    <footer>
-      <p><span>pensamentoS</span> &copy; 2024 </p>
-    </footer>
-  </body>
+    {{/if}}
+    {{#if message}}
+    <div class="message">
+      {{message}}
+    </div>
+    {{/if}}
+    {{{ body }}}
+  </div>
+  <footer>
+    <p><span>pensamentoS</span> &copy; 2024 </p>
+  </footer>
+</body>
+
 </html>

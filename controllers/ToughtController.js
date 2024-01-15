@@ -130,3 +130,5 @@ module.exports = class ToughController {
       .catch((err) => console.log())
   }
 }
+
+// Controller para Tought : salvar pensamentos, criar, atualizar etc
