@@ -1,7 +1,7 @@
 const Tought = require('../models/Tought')
 const User = require('../models/User')
 
-const { Op } = require('sequelize')
+const { Op } = require('sequelize') // operador de busca
 
 module.exports = class ToughController {
   static async dashboard(req, res) {
